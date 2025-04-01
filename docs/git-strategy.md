@@ -1,10 +1,10 @@
-Git Strategy for Cypress_JS_TAF
+# Git Strategy for Cypress_JS_TAF
 
-Branching Strategy
+## Branching Strategy
 
 We follow the Git Flow branching model to maintain a structured and efficient workflow.
 
-Main Branches:
+## Main Branches:
 
 **main**: Contains only stable, production-ready code.
 
@@ -20,7 +20,7 @@ Main Branches:
 
 **Release Branches (release/version-number)**: Used to prepare a new release, allowing final bug fixes and documentation updates.
 
-Workflow
+## Workflow
 
 1. Creating a New Feature Branch
 
