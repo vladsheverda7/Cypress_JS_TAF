@@ -1,0 +1,28 @@
+{
+    "name": "Cypress-test-automation-framework",
+    "version": "1.0.0",
+    "license": "ISC",
+    "description": "Cypress Test automation framework",
+    "author": "Vladislav Sheverda",
+    "keywords": [
+        "cypress",
+        "node",
+        "javascript",
+        "api",
+        "ui",
+        "taf"
+    ],
+    "scripts": {
+        "test": "cypress run",
+        "test-headed": "cypress run --headed",
+        "test-headless": "cypress run --headless",
+        "open": "cypress open"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vladsheverda7/Cypress_JS_TAF"
+    },
+    "devDependencies": {
+        "cypress": "^14.2.1"
+    }
+}
