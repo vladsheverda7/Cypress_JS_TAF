@@ -14,12 +14,6 @@ We follow the Git Flow branching model to maintain a structured and efficient wo
 
 **Feature Branches (feature/branch-name)**: Used for developing new features or test cases.
 
-**Bugfix Branches (bugfix/branch-name)**: Used for fixing non-critical bugs found in develop.
-
-**Hotfix Branches (hotfix/branch-name)**: Used for critical fixes that need to be applied to main immediately.
-
-**Release Branches (release/version-number)**: Used to prepare a new release, allowing final bug fixes and documentation updates.
-
 ## Workflow
 
 1. Creating a New Feature Branch
@@ -47,16 +41,3 @@ Ensure tests pass before merging.
 Use squash and merge to keep a clean history.
 
 Delete the branch after merging.
-
-5. Releasing a New Version
-
-Create a release/version-number branch.
-
-Perform final testing and bug fixes.
-
-Merge into main and tag the release.
-
-git checkout main
-git merge release/1.0.0
-git tag v1.0.0
-git push origin v1.0.0
