@@ -4,7 +4,7 @@
       "titile": "Swag Labs",
       "form": {
         "loginButton": "Login",
-        "userNameInputField": "Usename",
+        "userNameInputField": "Username",
         "passwordInputField": "Password"
       },
       "validations": {
