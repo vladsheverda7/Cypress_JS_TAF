@@ -1,7 +1,7 @@
 {
   "en": {
     "loginPage": {
-      "titile": "Swag Labs",
+      "title": "Swag Labs",
       "form": {
         "loginButton": "Login",
         "userNameInputField": "Username",
