@@ -43,7 +43,7 @@ describe('LoginPage: Given Login page is opened', { testIsolation: false }, () =
       cy.url().should('eq', pages.inventoryPage);
     });
 
-    it('Login Page: Then user can see inventry list on the Inventory page ', () => {
+    it('Login Page: Then user can see inventory list on the Inventory page ', () => {
       cy.get(selectors.inventoryPage.inventory_list).should('be.visible');
     });
   });
