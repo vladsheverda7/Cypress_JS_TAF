@@ -1,18 +1,16 @@
 {
-  "en": {
-    "loginPage": {
-      "title": "Swag Labs",
-      "form": {
-        "loginButton": "Login",
-        "userNameInputField": "Username",
-        "passwordInputField": "Password"
-      },
-      "validations": {
-        "usernameIsRequired": "Epic sadface: Username is required",
-        "passwordIsRequired": "Epic sadface: Password is required",
-        "userIsLockedOut": "Epic sadface: Sorry, this user has been locked out.",
-        "userDoesNotExist": "Epic sadface: Username and password do not match any user in this service"
-      }
+  "loginPage": {
+    "title": "Swag Labs",
+    "form": {
+      "loginButton": "Login",
+      "userNameInputField": "Username",
+      "passwordInputField": "Password"
+    },
+    "validations": {
+      "usernameIsRequired": "Epic sadface: Username is required",
+      "passwordIsRequired": "Epic sadface: Password is required",
+      "userIsLockedOut": "Epic sadface: Sorry, this user has been locked out.",
+      "userDoesNotExist": "Epic sadface: Username and password do not match any user in this service"
     }
   }
 }

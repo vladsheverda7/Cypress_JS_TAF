@@ -6,7 +6,7 @@ const loginPage = {
 };
 
 const inventoryPage = {
-  inventory_list: '[data-test="inventory-list"]',
+  inventoryList: '[data-test="inventory-list"]',
 };
 
 export default {

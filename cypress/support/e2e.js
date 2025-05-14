@@ -14,4 +14,13 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
+import selectors from './selectors';
+import l10n from './l10n.json';
+import users from '../sensitive-data/dev-users.json';
+import urls from './urls';
+
+global.selectors = selectors;
+global.l10n = l10n;
+global.users = users;
+global.urls = urls;
