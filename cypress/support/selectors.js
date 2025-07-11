@@ -9,7 +9,15 @@ const inventoryPage = {
   inventoryList: '[data-test="inventory-list"]',
 };
 
+const headerComponent = {
+  sidebar: {
+    burgerMenu: '.bm-burger-button button',
+    logout: '[data-test="logout-sidebar-link"]',
+  },
+};
+
 export default {
   loginPage,
   inventoryPage,
+  headerComponent,
 };

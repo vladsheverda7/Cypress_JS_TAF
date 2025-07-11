@@ -21,6 +21,9 @@ import users from '../sensitive-data/dev-users.json';
 import urls from './urls';
 
 global.selectors = selectors;
+global.loginPage = selectors.loginPage;
+global.inventoryPage = selectors.inventoryPage;
+global.headerComponent = selectors.headerComponent;
 global.l10n = l10n;
 global.users = users;
 global.urls = urls;
