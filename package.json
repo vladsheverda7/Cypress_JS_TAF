@@ -23,6 +23,7 @@
         "url": "https://github.com/vladsheverda7/Cypress_JS_TAF"
     },
     "devDependencies": {
-        "cypress": "^14.2.1"
+        "cypress": "^14.2.1",
+        "eslint": "^9.31.0"
     }
 }
