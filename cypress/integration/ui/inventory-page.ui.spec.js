@@ -13,13 +13,13 @@ describe('InventoryPage: Given Inventory page is opened', { testIsolation: false
       cy.get(headerComponent.title).should('be.visible').and('have.text', l10n.header.title);
     });
 
-    it('InventoryPage: Then user can see product label', () => {
+    it('InventoryPage: Then the user can see product label', () => {
       cy.get(headerComponent.secondaryHeader.productLabel)
         .should('be.visible')
         .and('have.text', l10n.header.secondaryHeader.title);
     });
 
-    it('InventoryPage: Then user can see sorting button', () => {
+    it('InventoryPage: Then the user can see sorting button', () => {
       cy.get(headerComponent.secondaryHeader.sortContainer.defaultSorting).should(
         'have.text',
         l10n.header.secondaryHeader.sortContainer
@@ -44,9 +44,13 @@ describe('InventoryPage: Given Inventory page is opened', { testIsolation: false
     it('InventoryPage: Then user can see product prices', () => {
       const actualPriceList = cy
         .get(inventoryPage.inventoryItem.price)
-        .then(($els) => [...$els].map((el) => el.innerText.slice(1).trim()));
+        .then(($els) => [...$els].map((el) => el.innerText.replace('$', '').trim()));
 
       actualPriceList.should('deep.equal', expectedPrices);
+    });
+
+    it('InventoryPage: Then the user can not see cart icon bage', () => {
+      cy.get(headerComponent.shoppingCartIconBadge).should('not.exist');
     });
   });
 
@@ -54,8 +58,11 @@ describe('InventoryPage: Given Inventory page is opened', { testIsolation: false
     before(() => {
       cy.get(inventoryPage.addToCart('backpack')).click();
     });
+
     it('InventoryPage: Then shopping cart icon badge icon equals 1', () => {
-      cy.get(headerComponent.shoppingCartIcon.shoppingCartBadge).should('have.text', 1);
+      cy.get(headerComponent.shoppingCartIconBadge).should('have.text', 1);
+    });
+    after(() => {
       cy.get(inventoryPage.removeFromCart('backpack')).click();
     });
   });
@@ -66,7 +73,7 @@ describe('InventoryPage: Given Inventory page is opened', { testIsolation: false
       cy.get(inventoryPage.removeFromCart('backpack')).click();
     });
     it('InventoryPage: Then shopping cart icon is not displayed', () => {
-      cy.get(headerComponent.shoppingCartIcon.shoppingCartBadge).should('not.exist');
+      cy.get(headerComponent.shoppingCartIconBadge).should('not.exist');
     });
   });
 

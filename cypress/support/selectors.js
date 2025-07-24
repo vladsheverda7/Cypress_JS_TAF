@@ -22,20 +22,13 @@ const headerComponent = {
     burgerMenu: '.bm-burger-button button',
     logout: '[data-test="logout-sidebar-link"]',
   },
-  shoppingCartIcon: {
-    shoppingCartBadge: '[data-test="shopping-cart-badge"]',
-  },
+  shoppingCartIconBadge: '[data-test="shopping-cart-badge"]',
+
   secondaryHeader: {
     productLabel: '[data-test="title"]',
     sortContainer: {
       productSortContainer: '[data-test="product-sort-container"]',
       defaultSorting: '[data-test="active-option"]',
-      sortOptions: {
-        az: '.product_sort_container option[value="az"]',
-        za: '.product_sort_container option[value="za"]',
-        lowToHigh: '.product_sort_container option[value="lohi"]',
-        highToLow: '.product_sort_container option[value="hilo"]',
-      },
     },
   },
 };
