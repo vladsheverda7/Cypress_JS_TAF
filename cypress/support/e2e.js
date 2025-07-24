@@ -19,8 +19,16 @@ import selectors from './selectors';
 import l10n from './l10n.json';
 import users from '../sensitive-data/dev-users.json';
 import urls from './urls';
+import products from './product-list.json';
+import { sortPriceLoHi, sortPriceHiLo } from './utils';
 
 global.selectors = selectors;
+global.loginPage = selectors.loginPage;
+global.inventoryPage = selectors.inventoryPage;
+global.headerComponent = selectors.headerComponent;
 global.l10n = l10n;
 global.users = users;
 global.urls = urls;
+global.products = products;
+global.sortPriceLoHi = sortPriceLoHi;
+global.sortPriceHiLo = sortPriceHiLo;

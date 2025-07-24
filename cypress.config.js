@@ -2,6 +2,7 @@ const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
+    checkJs: true,
     baseUrl: 'https://www.saucedemo.com',
     specPattern: 'cypress/integration/ui/**/*.spec.js',
     setupNodeEvents(on, config) {
