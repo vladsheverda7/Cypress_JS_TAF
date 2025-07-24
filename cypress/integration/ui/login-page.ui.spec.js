@@ -1,9 +1,8 @@
 describe('LoginPage: Given Login page is opened', { testIsolation: false }, () => {
   context('LoginPage: When user reviews the page', () => {
-    beforeEach(() => {
+    before(() => {
       cy.visit('/');
     });
-
     it('LoginPage: Then user see empty Username field', () => {
       cy.get(loginPage.userNameInputField)
         .should('have.attr', 'placeholder', l10n.loginPage.form.userNameInputField)
@@ -29,7 +28,6 @@ describe('LoginPage: Given Login page is opened', { testIsolation: false }, () =
 
   context('LoginPage: When user logs in with valid credentials', () => {
     before(() => {
-      cy.visit('/');
       cy.login(users.standard_user.username, users.standard_user.password);
     });
 
@@ -39,6 +37,9 @@ describe('LoginPage: Given Login page is opened', { testIsolation: false }, () =
 
     it('Login Page: Then user can see inventory list on the Inventory page ', () => {
       cy.get(inventoryPage.inventoryList).should('be.visible');
+    });
+    after(() => {
+      cy.logout();
     });
   });
 

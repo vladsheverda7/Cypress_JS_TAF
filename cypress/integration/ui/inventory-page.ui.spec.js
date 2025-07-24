@@ -1,9 +1,14 @@
 describe('InventoryPage: Given Inventory page is opened', { testIsolation: false }, () => {
+  const expectedNames = products.map((p) => p.name);
+  const expectedDescriptions = products.map((p) => p.description);
+  const expectedPrices = products.map((p) => p.price.toString());
+
+  before(() => {
+    cy.visit('/');
+    cy.login(users.standard_user.username, users.standard_user.password);
+  });
+
   context('InventoryPage: When inventory page is loaded', () => {
-    before(() => {
-      cy.visit('/');
-      cy.login(users.standard_user.username, users.standard_user.password);
-    });
     it('InventoryPage: Then user can see page title', () => {
       cy.get(headerComponent.title).should('be.visible').and('have.text', l10n.header.title);
     });
@@ -22,25 +27,31 @@ describe('InventoryPage: Given Inventory page is opened', { testIsolation: false
     });
 
     it('InventoryPage: Then user can see product names', () => {
-      const expectedNames = products.map((product) => product.name);
-      inventoryPage.getNameList().should('deep.equal', expectedNames);
+      const actualNamesList = cy
+        .get(inventoryPage.inventoryItem.name)
+        .then(($els) => [...$els].map((el) => el.innerText.trim()));
+      actualNamesList.should('deep.equal', expectedNames);
     });
 
     it('InventoryPage: Then user can see product description', () => {
-      const expectedDescriptions = products.map((product) => product.description);
-      inventoryPage.getDescriptionList().should('deep.equal', expectedDescriptions);
+      const actualDescriptionList = cy
+        .get(inventoryPage.inventoryItem.description)
+        .then(($els) => [...$els].map((el) => el.innerText.trim()));
+
+      actualDescriptionList.should('deep.equal', expectedDescriptions);
     });
 
     it('InventoryPage: Then user can see product prices', () => {
-      const expectedPrices = products.map((product) => product.price);
-      inventoryPage.getPriceList().should('deep.equal', expectedPrices);
+      const actualPriceList = cy
+        .get(inventoryPage.inventoryItem.price)
+        .then(($els) => [...$els].map((el) => el.innerText.slice(1).trim()));
+
+      actualPriceList.should('deep.equal', expectedPrices);
     });
   });
 
   context('InventoryPage: When user clicks add to cart button', () => {
     before(() => {
-      cy.visit('/');
-      cy.login(users.standard_user.username, users.standard_user.password);
       cy.get(inventoryPage.addToCart('backpack')).click();
     });
     it('InventoryPage: Then shopping cart icon badge icon equals 1', () => {
@@ -51,8 +62,6 @@ describe('InventoryPage: Given Inventory page is opened', { testIsolation: false
 
   context('InventoryPage: When user clicks remove button', () => {
     before(() => {
-      cy.visit('/');
-      cy.login(users.standard_user.username, users.standard_user.password);
       cy.get(inventoryPage.addToCart('backpack')).click();
       cy.get(inventoryPage.removeFromCart('backpack')).click();
     });
@@ -61,40 +70,56 @@ describe('InventoryPage: Given Inventory page is opened', { testIsolation: false
     });
   });
 
-  context('InventoryPage: When the user change sorting by name', () => {
+  context('InventoryPage: When the user change sorting by name from az to za', () => {
     before(() => {
-      cy.visit('/');
-      cy.login(users.standard_user.username, users.standard_user.password);
-    });
-    it('InventoryPage: Product list is sorted in Z-A order', () => {
       cy.get(headerComponent.secondaryHeader.sortContainer.productSortContainer).select('za');
-      const expectedNameList = products.map((product) => product.name);
-      inventoryPage.getNameList().should('deep.equal', expectedNameList.reverse());
     });
+    it('InventoryPage: Then product list is sorted in Z-A order', () => {
+      const actualSortedNamesList = cy
+        .get(inventoryPage.inventoryItem.name)
+        .then(($els) => [...$els].map((el) => el.innerText.trim()));
 
-    it('InventoryPage: Product list is sorted in A-Z order', () => {
-      cy.get(headerComponent.secondaryHeader.sortContainer.productSortContainer).select('az');
-      const expectedNameList = products.map((product) => product.name);
-      inventoryPage.getNameList().should('deep.equal', expectedNameList.sort());
+      actualSortedNamesList.should('deep.equal', expectedNames.reverse());
     });
   });
 
-  context('InventoryPage: When the user change sorting by price', () => {
+  context('InventoryPage: When the user change sorting by name from za to az', () => {
     before(() => {
-      cy.visit('/');
-      cy.login(users.standard_user.username, users.standard_user.password);
+      cy.get(headerComponent.secondaryHeader.sortContainer.productSortContainer).select('az');
     });
 
-    it('InventoryPage: Product list is sorted in Low to High order', () => {
+    it('InventoryPage: Then product list is sorted in A-Z order', () => {
+      const actualSortedNamesList = cy
+        .get(inventoryPage.inventoryItem.name)
+        .then(($els) => [...$els].map((el) => el.innerText.trim()));
+
+      actualSortedNamesList.should('deep.equal', expectedNames.sort());
+    });
+  });
+
+  context('InventoryPage: When the user change sorting by price from Low to High order', () => {
+    before(() => {
       cy.get(headerComponent.secondaryHeader.sortContainer.productSortContainer).select('lohi');
-      const expectedPriceList = products.map((product) => product.price);
-      inventoryPage.getPriceList().should('deep.equal', sortPriceLoHi(expectedPriceList));
     });
+    it('InventoryPage: Then product list is sorted in Low to High order', () => {
+      const actualPriceList = cy
+        .get(inventoryPage.inventoryItem.price)
+        .then(($els) => [...$els].map((el) => el.innerText.replace('$', '').trim()));
 
-    it('InventoryPage: Product list is sorted in High to Low order', () => {
+      actualPriceList.should('deep.equal', sortPriceLoHi(expectedPrices));
+    });
+  });
+
+  context('InventoryPage: When the user change sorting by price from High to Low order', () => {
+    before(() => {
       cy.get(headerComponent.secondaryHeader.sortContainer.productSortContainer).select('hilo');
-      const expectedPriceList = products.map((product) => product.price);
-      inventoryPage.getPriceList().should('deep.equal', sortPriceHiLo(expectedPriceList));
+    });
+    it('InventoryPage: Then product list is sorted in High to Low order', () => {
+      const actualPriceList = cy
+        .get(inventoryPage.inventoryItem.price)
+        .then(($els) => [...$els].map((el) => el.innerText.replace('$', '').trim()));
+
+      actualPriceList.should('deep.equal', sortPriceHiLo(expectedPrices));
     });
   });
 });

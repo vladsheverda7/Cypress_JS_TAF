@@ -14,21 +14,6 @@ const inventoryPage = {
   },
   addToCart: (productKey) => `[data-test="add-to-cart-sauce-labs-${productKey}"]`,
   removeFromCart: (productKey) => `[data-test="remove-sauce-labs-${productKey}"]`,
-  getNameList() {
-    return cy
-      .get(this.inventoryItem.name)
-      .then(($els) => [...$els].map((el) => el.innerText.trim()));
-  },
-  getDescriptionList() {
-    return cy
-      .get(this.inventoryItem.description)
-      .then(($els) => [...$els].map((el) => el.innerText.trim()));
-  },
-  getPriceList() {
-    return cy
-      .get(this.inventoryItem.price)
-      .then(($els) => [...$els].map((el) => el.innerText.slice(1).trim()));
-  },
 };
 
 const headerComponent = {
