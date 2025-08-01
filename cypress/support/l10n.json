@@ -19,5 +19,14 @@
       "title": "Products",
       "sortContainer": "Name (A to Z)"
     }
+  },
+  "cartPage": {
+    "title": "Your Cart",
+    "productTable": {
+      "quantity": "QTY",
+      "description": "Description"
+    },
+    "continueShoppingButton": "Continue Shopping",
+    "checkoutButton": "Checkout"
   }
 }

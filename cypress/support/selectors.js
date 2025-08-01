@@ -23,6 +23,7 @@ const headerComponent = {
     logout: '[data-test="logout-sidebar-link"]',
   },
   shoppingCartIconBadge: '[data-test="shopping-cart-badge"]',
+  cartButton: '[data-test="shopping-cart-link"]',
 
   secondaryHeader: {
     productLabel: '[data-test="title"]',
@@ -33,8 +34,19 @@ const headerComponent = {
   },
 };
 
+const cartPage = {
+  title: '[data-test="title"]',
+  cartList: {
+    qtyLabel: '[data-test="cart-quantity-label"]',
+    descriptionLabel: '[data-test="cart-desc-label"]',
+  },
+  continueShoppingButton: '[data-test="continue-shopping"]',
+  checkoutButton: '#checkout',
+};
+
 export default {
   loginPage,
   inventoryPage,
   headerComponent,
+  cartPage,
 };
