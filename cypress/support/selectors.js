@@ -39,6 +39,14 @@ const cartPage = {
   cartList: {
     qtyLabel: '[data-test="cart-quantity-label"]',
     descriptionLabel: '[data-test="cart-desc-label"]',
+    inventoryItem: '[data-test="inventory-item"]',
+    cartItem: {
+      itemQty: '[data-test="item-quantity"]',
+      itemName: '[data-test="inventory-item-name"]',
+      itemDescription: '[data-test="inventory-item-desc"]',
+      itemPrice: '[data-test="inventory-item-price"]',
+      removeButton: '[data-test="remove-sauce-labs-backpack"]',
+    },
   },
   continueShoppingButton: '[data-test="continue-shopping"]',
   checkoutButton: '#checkout',
