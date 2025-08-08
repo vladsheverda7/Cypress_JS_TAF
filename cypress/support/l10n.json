@@ -28,5 +28,18 @@
     },
     "continueShoppingButton": "Continue Shopping",
     "checkoutButton": "Checkout"
+  },
+  "checkoutStepOnePage": {
+    "title": "Checkout: Your Information",
+    "fistNameInput": "First Name",
+    "lastNameInput": "Last Name",
+    "postCodeInput": "Zip/Postal Code",
+    "cancelButton": "Cancel",
+    "continueButton": "Continue",
+    "validations": {
+      "firstNameIsRequired": "Error: First Name is required",
+      "lastNameIsRequired": "Error: Last Name is required",
+      "zipPostCodeIsRequired": "Error: Postal Code is required"
+    }
   }
 }

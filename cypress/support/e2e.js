@@ -27,6 +27,7 @@ global.loginPage = selectors.loginPage;
 global.inventoryPage = selectors.inventoryPage;
 global.headerComponent = selectors.headerComponent;
 global.cartPage = selectors.cartPage;
+global.checkoutStepOnePage = selectors.checkoutStepOnePage;
 global.l10n = l10n;
 global.users = users;
 global.urls = urls;

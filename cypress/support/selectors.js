@@ -52,9 +52,22 @@ const cartPage = {
   checkoutButton: '#checkout',
 };
 
+const checkoutStepOnePage = {
+  title: '[data-test="title"]',
+  checkoutInfoForm: {
+    firstNameInputField: '[data-test="firstName"]',
+    lastNameInputField: '[data-test="lastName"]',
+    zipCodeInputField: '[data-test="postalCode"]',
+  },
+  cancelButton: '[data-test="cancel"]',
+  continueButton: '[data-test="continue"]',
+  errorMessage: '[data-test="error"]',
+};
+
 export default {
   loginPage,
   inventoryPage,
   headerComponent,
   cartPage,
+  checkoutStepOnePage,
 };
