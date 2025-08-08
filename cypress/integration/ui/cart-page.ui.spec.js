@@ -78,7 +78,7 @@ describe('CartPage: Given Cart Page is opened', { testIsolation: false }, () => 
       });
     });
     it('CartPage: Then remove button for item is visible', () => {
-      cy.get(cartPage.cartList.cartItem.removeButton).then(($removeButtons) => {
+      cy.get(cartPage.cartList.cartItem.removeButton('backpack')).then(($removeButtons) => {
         const removeButtonCount = [...$removeButtons].length;
         cy.get(cartPage.cartList.inventoryItem).then(($items) => {
           const itemsCount = [...$items].length;
@@ -88,7 +88,28 @@ describe('CartPage: Given Cart Page is opened', { testIsolation: false }, () => 
     });
 
     after(() => {
-      cy.get(cartPage.cartList.cartItem.removeButton).click();
+      cy.get(cartPage.cartList.cartItem.removeButton('backpack')).click();
+    });
+  });
+
+  context('CartPage: When the user clicks remove button', () => {
+    before(() => {
+      cy.get(cartPage.continueShoppingButton).click();
+      cy.get(inventoryPage.addToCart('backpack')).click();
+      cy.get(inventoryPage.addToCart('fleece-jacket')).click();
+      cy.then(() => {
+        cy.get(headerComponent.cartButton).click();
+      });
+      cy.get(cartPage.cartList.cartItem.removeButton('backpack')).click();
+    });
+    it('CartPage: Then item should be deleted', () => {
+      cy.get(cartPage.cartList.inventoryItem).then(($inventoryItems) => {
+        const inventoryItemsListLength = [...$inventoryItems].length;
+        expect(inventoryItemsListLength).to.eq(1);
+      });
+    });
+    after(() => {
+      cy.get(cartPage.cartList.cartItem.removeButton('fleece-jacket')).click();
     });
   });
 });

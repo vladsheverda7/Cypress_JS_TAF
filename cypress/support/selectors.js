@@ -45,7 +45,7 @@ const cartPage = {
       itemName: '[data-test="inventory-item-name"]',
       itemDescription: '[data-test="inventory-item-desc"]',
       itemPrice: '[data-test="inventory-item-price"]',
-      removeButton: '[data-test="remove-sauce-labs-backpack"]',
+      removeButton: (productKey) => `[data-test="remove-sauce-labs-${productKey}"]`,
     },
   },
   continueShoppingButton: '[data-test="continue-shopping"]',
